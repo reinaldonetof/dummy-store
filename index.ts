@@ -1,4 +1,5 @@
 import { registerRootComponent } from 'expo';
+__DEV__ && require("./config/ReactotronConfig");
 
 import App from './App';
 
