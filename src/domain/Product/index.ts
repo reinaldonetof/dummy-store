@@ -1,5 +1,4 @@
-import { Category } from "../../data/dtos/CategoryDTO";
-import { Product } from "../../data/dtos/ProductDTO";
+import { ProductRequest } from "../../data/dtos/ProductDTO";
 import HttpService from "../../services/httpService";
 
 interface FetchProductsParams {
@@ -17,7 +16,7 @@ const fetchProducts = async (params?: FetchProductsParams) => {
   }
 
   const url = `/products?${queryParams.toString()}`;
-  const response = await HttpService.get<Product[]>(url);
+  const response = await HttpService.get<ProductRequest>(url);
   return response.data;
 };
 
