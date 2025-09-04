@@ -5,9 +5,14 @@ import colors from "../theme/colors";
 interface ListHeaderProps {
   header: string;
   onPressSeeAll?: () => void;
+  rightComponent?: React.ReactNode;
 }
 
-const ListHeader = ({ header, onPressSeeAll }: ListHeaderProps) => {
+const ListHeader = ({
+  header,
+  onPressSeeAll,
+  rightComponent,
+}: ListHeaderProps) => {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>{header}</Text>
@@ -16,6 +21,7 @@ const ListHeader = ({ header, onPressSeeAll }: ListHeaderProps) => {
           <Text style={styles.seeAll}>See All</Text>
         </TouchableOpacity>
       ) : null}
+      {rightComponent ? rightComponent : null}
     </View>
   );
 };

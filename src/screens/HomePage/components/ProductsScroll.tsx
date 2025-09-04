@@ -1,33 +1,51 @@
-import React, { useEffect, useState } from "react";
-import { FlatList, StyleSheet, View } from "react-native";
+import React from "react";
+import { FlatList, StyleSheet, Text } from "react-native";
 import ListHeader from "../../../components/ListHeader";
-import { ProductDTO } from "../../../data/dtos/ProductDTO";
-import { fetchProducts } from "../../../domain/Product";
 import ProductMiniCardItem from "../../../components/ProductMiniCardItem";
-
-// import { Container } from './styles';
+import { useGetProducts } from "../../../hooks/useGetProducts";
+import LoadingIndicator from "../../../components/LoadingIndicator";
 
 const ProductsScroll: React.FC = () => {
-  const [products, setProducts] = useState<ProductDTO[]>([]);
-  //   console.log("🚀 ~ ProductsScroll ~ products:", products);
+  const {
+    loadingProducts,
+    productsRequest,
+    nextPage,
+    currentProductsShowingValue,
+  } = useGetProducts();
 
-  useEffect(() => {
-    fetchProducts()
-      .then((p) => setProducts(p.products))
-      .catch((e) => console.log(e));
-  }, []);
+  const onEndReached = () => {
+    if (!loadingProducts) {
+      nextPage();
+    }
+  };
+
+  const RightComponent = () => {
+    if (productsRequest?.total) {
+      return (
+        <>
+          <Text>
+            {currentProductsShowingValue}/{productsRequest.total} Products
+          </Text>
+        </>
+      );
+    }
+    return null;
+  };
 
   return (
     <>
-      <ListHeader header="Products" />
+      <ListHeader header="Products" rightComponent={<RightComponent />} />
       <FlatList
-        data={products}
+        data={productsRequest?.products}
         keyExtractor={(item) => `${item.id}`}
         renderItem={({ item }) => <ProductMiniCardItem {...item} />}
         numColumns={2}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.contentContainerStyle}
         columnWrapperStyle={styles.columnWrapperStyle}
+        onEndReached={onEndReached}
+        ListFooterComponent={loadingProducts ? <LoadingIndicator /> : null}
+        onEndReachedThreshold={0.5}
       />
     </>
   );

@@ -36,18 +36,13 @@ export default class CategoryDomain {
       });
       return newSortCategories;
     }
-    return [];
+    return catDefault;
   }
 
   public selectingCategory(categorySelected: Category) {
-    if (this.categorySelected?.slug === categorySelected.slug) {
-      this.setCategorySelected(null);
-      return this.categoriesDefault;
-    }
-
-    this.setCategorySelected(categorySelected);
-    const newSortCategories = this.getSortedCategories();
-    return newSortCategories;
+    const isDeselecting = this.categorySelected?.slug === categorySelected.slug;
+    this.setCategorySelected(isDeselecting ? null : categorySelected);
+    return isDeselecting ? this.categoriesDefault : this.getSortedCategories();
   }
 
   public async fetchCategories() {
