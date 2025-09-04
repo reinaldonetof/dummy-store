@@ -6,14 +6,18 @@ export const useGetCategories = () => {
   const [categories, setCategories] = useState<Category[]>(
     CategorySingleton.getSortedCategories()
   );
+  const [loadingCategories, setLoadingCategories] = useState(false);
 
   useEffect(() => {
     const fetchCategoriesData = async () => {
       try {
+        setLoadingCategories(true);
         const categoriesData = await CategorySingleton.fetchCategories();
         setCategories(categoriesData);
       } catch (error) {
         console.error("Failed to fetch categories:", error);
+      } finally {
+        setLoadingCategories(false);
       }
     };
     if (CategorySingleton.getCategoriesDefault().length > 0) return;
@@ -26,5 +30,5 @@ export const useGetCategories = () => {
     setCategories(sortedCategories);
   };
 
-  return { categories, onSelectCategory };
+  return { categories, loadingCategories, onSelectCategory };
 };

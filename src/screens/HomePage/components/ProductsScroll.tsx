@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import ListHeader from "../../../components/ListHeader";
-import { Product } from "../../../data/dtos/ProductDTO";
+import { ProductDTO } from "../../../data/dtos/ProductDTO";
 import { fetchProducts } from "../../../domain/Product";
 import ProductMiniCardItem from "../../../components/ProductMiniCardItem";
 
 // import { Container } from './styles';
 
 const ProductsScroll: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<ProductDTO[]>([]);
   //   console.log("🚀 ~ ProductsScroll ~ products:", products);
 
   useEffect(() => {

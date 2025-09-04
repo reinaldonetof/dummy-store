@@ -1,11 +1,11 @@
 export interface ProductRequest {
-  products: Product[];
+  products: ProductDTO[];
   total: number;
   skip: number;
   limit: number;
 }
 
-export interface Product {
+export interface ProductDTO {
   id: number;
   title: string;
   description: string;
