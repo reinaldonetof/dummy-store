@@ -1,6 +1,4 @@
-import { Category, CategoryDTO } from "../data/dtos/CategoryDTO";
-import { ProductDTO, ProductRequest } from "../data/dtos/ProductDTO";
-import { mapCategory } from "../data/mappers/categoryMapper";
+import { ProductRequest } from "../data/dtos/ProductDTO";
 import HttpService from "./httpService";
 
 export interface FetchProductsParams {
