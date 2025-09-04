@@ -1,13 +1,15 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import CategoryScroll from "./components/CategoryScroll";
+import CategoriesScroll from "./components/CategoriesScroll";
+import ProductsScroll from "./components/ProductsScroll";
 
 const HomePage: React.FC = () => {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-        <CategoryScroll />
+        <CategoriesScroll />
+        <ProductsScroll />
       </View>
     </SafeAreaView>
   );
@@ -20,6 +22,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 24,
+    gap: 8,
   },
 });
 

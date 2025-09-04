@@ -1,13 +1,13 @@
 import React, { useRef } from "react";
-import { FlatList, StyleSheet, View } from "react-native";
+import { FlatList, ListRenderItem, StyleSheet, View } from "react-native";
 import { Category } from "../../../data/dtos/CategoryDTO";
 import ListHeader from "../../../components/ListHeader";
 import CategoryItem from "../../../components/CategoryItem";
 import { useGetCategories } from "../../../hooks/useGetCategories";
 
-export interface CategoryScrollProps {}
+export interface CategoriesScrollProps {}
 
-const CategoryScroll = ({}: CategoryScrollProps) => {
+const CategoriesScroll = ({}: CategoriesScrollProps) => {
   const { categories, onSelectCategory } = useGetCategories();
   const flatListRef = useRef<FlatList>(null);
 
@@ -20,21 +20,23 @@ const CategoryScroll = ({}: CategoryScrollProps) => {
     return null;
   }
 
+  const renderItem: ListRenderItem<Category> = ({ item }) => (
+    <View style={styles.containerElement}>
+      <CategoryItem
+        {...item}
+        isRow
+        onPress={(category) => handleOnPress(category)}
+      />
+    </View>
+  );
+
   return (
     <View>
       <ListHeader header="Categories" onPressSeeAll={() => {}} />
       <FlatList
         ref={flatListRef}
         data={categories}
-        renderItem={({ item }) => (
-          <View style={styles.containerElement}>
-            <CategoryItem
-              {...item}
-              isRow
-              onPress={(category) => handleOnPress(category)}
-            />
-          </View>
-        )}
+        renderItem={renderItem}
         horizontal
         showsHorizontalScrollIndicator={false}
       />
@@ -48,4 +50,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CategoryScroll;
+export default CategoriesScroll;
