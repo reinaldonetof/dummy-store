@@ -24,6 +24,21 @@ export default class CategoryDomain {
     this.categorySelected = category;
   }
 
+  public getSortedCategories() {
+    const catDefault = this.getCategoriesDefault();
+    const catSelected = this.getCategorySelected();
+    if (catSelected && catDefault.length > 0) {
+      const newSortCategories: Category[] = [
+        { ...catSelected, selected: true },
+      ];
+      this.categoriesDefault.forEach((cat) => {
+        if (cat.slug !== catSelected.slug) newSortCategories.push(cat);
+      });
+      return newSortCategories;
+    }
+    return [];
+  }
+
   public selectingCategory(categorySelected: Category) {
     if (this.categorySelected?.slug === categorySelected.slug) {
       this.setCategorySelected(null);
@@ -31,12 +46,7 @@ export default class CategoryDomain {
     }
 
     this.setCategorySelected(categorySelected);
-    const newSortCategories: Category[] = [
-      { ...categorySelected, selected: true },
-    ];
-    this.categoriesDefault.forEach((cat) => {
-      if (cat.slug !== categorySelected.slug) newSortCategories.push(cat);
-    });
+    const newSortCategories = this.getSortedCategories();
     return newSortCategories;
   }
 

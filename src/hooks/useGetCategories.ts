@@ -3,7 +3,9 @@ import { Category } from "../data/dtos/CategoryDTO";
 import { CategorySingleton } from "../singletons/Category";
 
 export const useGetCategories = () => {
-  const [categories, setCategories] = useState<Category[]>([]);
+  const [categories, setCategories] = useState<Category[]>(
+    CategorySingleton.getSortedCategories()
+  );
 
   useEffect(() => {
     const fetchCategoriesData = async () => {
