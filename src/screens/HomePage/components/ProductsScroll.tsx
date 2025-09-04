@@ -5,13 +5,18 @@ import ProductMiniCardItem from "../../../components/ProductMiniCardItem";
 import { useGetProducts } from "../../../hooks/useGetProducts";
 import LoadingIndicator from "../../../components/LoadingIndicator";
 
-const ProductsScroll: React.FC = () => {
+interface ProductsScrollProps {
+  categorySlug?: string;
+}
+
+const ProductsScroll = ({ categorySlug }: ProductsScrollProps) => {
   const {
     loadingProducts,
     productsRequest,
     nextPage,
     currentProductsShowingValue,
-  } = useGetProducts();
+    loadingNewProducts,
+  } = useGetProducts({ categorySlug });
 
   const onEndReached = () => {
     if (!loadingProducts) {
@@ -35,18 +40,22 @@ const ProductsScroll: React.FC = () => {
   return (
     <>
       <ListHeader header="Products" rightComponent={<RightComponent />} />
-      <FlatList
-        data={productsRequest?.products}
-        keyExtractor={(item) => `${item.id}`}
-        renderItem={({ item }) => <ProductMiniCardItem {...item} />}
-        numColumns={2}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.contentContainerStyle}
-        columnWrapperStyle={styles.columnWrapperStyle}
-        onEndReached={onEndReached}
-        ListFooterComponent={loadingProducts ? <LoadingIndicator /> : null}
-        onEndReachedThreshold={0.5}
-      />
+      {loadingNewProducts ? (
+        <LoadingIndicator />
+      ) : (
+        <FlatList
+          data={productsRequest?.products}
+          keyExtractor={(item) => `${item.id}`}
+          renderItem={({ item }) => <ProductMiniCardItem {...item} />}
+          numColumns={2}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.contentContainerStyle}
+          columnWrapperStyle={styles.columnWrapperStyle}
+          onEndReached={onEndReached}
+          ListFooterComponent={loadingProducts ? <LoadingIndicator /> : null}
+          onEndReachedThreshold={0.5}
+        />
+      )}
     </>
   );
 };

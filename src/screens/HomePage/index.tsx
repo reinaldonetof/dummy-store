@@ -1,15 +1,25 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import CategoriesScroll from "./components/CategoriesScroll";
+import CategoriesScroll, {
+  CategoriesScrollProps,
+} from "./components/CategoriesScroll";
 import ProductsScroll from "./components/ProductsScroll";
 
-const HomePage: React.FC = () => {
+const HomePage = () => {
+  const [categorySlug, setCategorySlug] = React.useState<string | undefined>(
+    undefined
+  );
+  const handleOnSelectCategory: CategoriesScrollProps["handleOnSelectCategory"] =
+    (category) => {
+      setCategorySlug(category.selected ? category.slug : undefined);
+    };
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-        <CategoriesScroll />
-        <ProductsScroll />
+        <CategoriesScroll handleOnSelectCategory={handleOnSelectCategory} />
+        <ProductsScroll categorySlug={categorySlug} />
       </View>
     </SafeAreaView>
   );

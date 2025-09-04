@@ -4,14 +4,20 @@ import { Category } from "../../../data/dtos/CategoryDTO";
 import ListHeader from "../../../components/ListHeader";
 import CategoryItem from "../../../components/CategoryItem";
 import { useGetCategories } from "../../../hooks/useGetCategories";
+import LoadingIndicator from "../../../components/LoadingIndicator";
 
-export interface CategoriesScrollProps {}
+export interface CategoriesScrollProps {
+  handleOnSelectCategory?: (category: Category) => void;
+}
 
-const CategoriesScroll = ({}: CategoriesScrollProps) => {
+const CategoriesScroll = ({
+  handleOnSelectCategory,
+}: CategoriesScrollProps) => {
   const { categories, onSelectCategory } = useGetCategories();
   const flatListRef = useRef<FlatList>(null);
 
   const handleOnPress = (category: Category) => {
+    handleOnSelectCategory?.({ ...category, selected: !category.selected });
     onSelectCategory(category);
     flatListRef.current?.scrollToIndex({ index: 0, animated: true });
   };
@@ -37,6 +43,7 @@ const CategoriesScroll = ({}: CategoriesScrollProps) => {
         ref={flatListRef}
         data={categories}
         renderItem={renderItem}
+        ListEmptyComponent={<LoadingIndicator />}
         horizontal
         showsHorizontalScrollIndicator={false}
       />
