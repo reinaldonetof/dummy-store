@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Category } from "../data/dtos/CategoryDTO";
-import { fetchCategories } from "../domain/Category";
+import { CategorySingleton } from "../singletons/Category";
 
 export const useGetCategories = () => {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -8,14 +8,21 @@ export const useGetCategories = () => {
   useEffect(() => {
     const fetchCategoriesData = async () => {
       try {
-        const categoriesData = await fetchCategories();
+        const categoriesData = await CategorySingleton.fetchCategories();
         setCategories(categoriesData);
       } catch (error) {
         console.error("Failed to fetch categories:", error);
       }
     };
+    if (CategorySingleton.getCategoriesDefault().length > 0) return;
     fetchCategoriesData();
   }, []);
 
-  return { categories };
+  const onSelectCategory = (categorySelected: Category) => {
+    const sortedCategories =
+      CategorySingleton.selectingCategory(categorySelected);
+    setCategories(sortedCategories);
+  };
+
+  return { categories, onSelectCategory };
 };
