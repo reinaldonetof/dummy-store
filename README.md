@@ -129,17 +129,14 @@ Comprehensive error handling strategy:
 ## 🖼️ Screenshots
 
 ### Category View
-![Category View](https://github.com/reinaldonetof/dummy-store/blob/development/public/assets/pic-category.png)
+<img src="https://github.com/reinaldonetof/dummy-store/blob/development/public/assets/pic-category.png" alt="Category View"  height="150"/>
 
-### Product Detail
-![Product Detail](https://github.com/reinaldonetof/dummy-store/blob/development/public/assets/pic-detail.png)
+<img src="https://github.com/reinaldonetof/dummy-store/blob/development/public/assets/pic-detail.png" alt="Product Detail" height="150"/>
 
-### Pagination
-![Pagination](https://github.com/reinaldonetof/dummy-store/blob/development/public/assets/pic-pagination.png)
+<img src="https://github.com/reinaldonetof/dummy-store/blob/development/public/assets/pic-pagination.png" alt="Pagination" height="150"/>
 
 ## 🎥 Demo Video
 
-[![Demo Video](https://img.shields.io/badge/Watch-Demo%20Video-red?style=for-the-badge&logo=youtube)](https://github.com/reinaldonetof/dummy-store/blob/development/public/assets/video-demo.mp4)
+https://github.com/reinaldonetof/dummy-store/blob/development/public/assets/video-demo.mp4
 
-[Click here to watch the demo video](https://github.com/reinaldonetof/dummy-store/blob/development/public/assets/video-demo.mp4)
 
