@@ -1,7 +1,7 @@
 import { ProductHome } from "../data/dtos/ProductDTO";
 
 export type RootStackParamList = {
-  Home: undefined;
+  Home: { categorySlug?: string };
   Detail: { productId?: number; product?: ProductHome };
 };
 

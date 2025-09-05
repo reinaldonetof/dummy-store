@@ -3,7 +3,7 @@ export const linking = {
   config: {
     screens: {
       Home: {
-        path: "home",
+        path: "home/:categorySlug",
       },
       Detail: {
         path: "detail/:productId",
