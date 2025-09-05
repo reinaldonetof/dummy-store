@@ -1,10 +1,34 @@
 import React from "react";
-import { View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import { ProductDTO } from "../../data/dtos/ProductDTO";
+import { SafeAreaView } from "react-native-safe-area-context";
+import colors from "../../theme/colors";
+import { useRoute } from "@react-navigation/native";
 
-// import { Container } from './styles';
+const DetailPage = () => {
+  const { params } = useRoute();
+  const product = params?.product;
+  console.log("🚀 ~ DetailPage ~ product:", product);
+  const productId = params?.productId;
+  console.log("🚀 ~ DetailPage ~ productId:", productId);
 
-const DetailPage: React.FC = () => {
-  return <View />;
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      <View style={styles.container}></View>
+    </SafeAreaView>
+  );
 };
+
+const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: colors.backgroundLight,
+  },
+  container: {
+    flex: 1,
+    paddingHorizontal: 24,
+    gap: 8,
+  },
+});
 
 export default DetailPage;

@@ -5,6 +5,7 @@ import CategoriesScroll, {
   CategoriesScrollProps,
 } from "./components/CategoriesScroll";
 import ProductsScroll from "./components/ProductsScroll";
+import colors from "../../theme/colors";
 
 const HomePage = () => {
   const [categorySlug, setCategorySlug] = React.useState<string | undefined>(
@@ -28,6 +29,7 @@ const HomePage = () => {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
+    backgroundColor: colors.backgroundLight,
   },
   container: {
     flex: 1,
