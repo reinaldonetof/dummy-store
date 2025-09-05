@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import { Platform, Alert } from "react-native";
-import CalendarReminderModule from "../src/CalendarReminderModule";
+import CalendarReminderModule from "../src/modules/CalendarReminder/CalendarReminderModule";
 
 export interface ProductReminderData {
   name: string;
