@@ -1,11 +1,11 @@
 import { Image } from "expo-image";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { ProductDTO } from "../data/dtos/ProductDTO";
+import { ProductHome } from "../data/dtos/ProductDTO";
 import colors from "../theme/colors";
 
-export interface ProductMiniCardItemProps extends ProductDTO {
-  onPress?: (product: ProductDTO) => void;
+export interface ProductMiniCardItemProps extends ProductHome {
+  onPress?: (product: ProductHome) => void;
 }
 
 const ProductMiniCardItem = ({

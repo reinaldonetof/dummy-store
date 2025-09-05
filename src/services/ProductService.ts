@@ -1,4 +1,4 @@
-import { ProductRequest } from "../data/dtos/ProductDTO";
+import { ProductDTO, ProductRequest } from "../data/dtos/ProductDTO";
 import HttpService from "./httpService";
 
 export interface FetchProductsParams {
@@ -11,11 +11,16 @@ export interface FetchProductsByCategoryParams extends FetchProductsParams {
   category: string;
 }
 
+export interface FetchProductByIdParams {
+  id: number | string;
+}
+
 export interface ProductRepositoryInterface {
   fetchProducts(params?: FetchProductsParams): Promise<ProductRequest>;
   fetchProductsByCategory(
     params?: FetchProductsByCategoryParams
   ): Promise<ProductRequest>;
+  fetchProductById(param: FetchProductByIdParams): Promise<ProductDTO>;
 }
 
 export class ProductRepository implements ProductRepositoryInterface {
@@ -26,6 +31,7 @@ export class ProductRepository implements ProductRepositoryInterface {
       if (!!params.skip) queryParams.append("skip", params.skip.toString());
       if (!!params.order) queryParams.append("order", params.order);
     }
+    queryParams.append("select", "id,images,title,price,rating");
 
     const url = `/products?${queryParams.toString()}`;
     const response = await HttpService.get<ProductRequest>(url);
@@ -41,11 +47,18 @@ export class ProductRepository implements ProductRepositoryInterface {
       if (!!params.skip) queryParams.append("skip", params.skip.toString());
       if (!!params.order) queryParams.append("order", params.order);
     }
+    queryParams.append("select", "id,images,title,price,rating");
 
     const url = `/products/category/${
       params?.category
     }?${queryParams.toString()}`;
     const response = await HttpService.get<ProductRequest>(url);
+    return response.data;
+  }
+
+  async fetchProductById(param: FetchProductByIdParams): Promise<ProductDTO> {
+    const url = `/products/${param.id}`;
+    const response = await HttpService.get<ProductDTO>(url);
     return response.data;
   }
 }

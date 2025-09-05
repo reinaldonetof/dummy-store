@@ -4,11 +4,11 @@ import ListHeader from "../../../components/ListHeader";
 import ProductMiniCardItem from "../../../components/ProductMiniCardItem";
 import { useGetProducts } from "../../../hooks/useGetProducts";
 import LoadingIndicator from "../../../components/LoadingIndicator";
-import { ProductDTO } from "../../../data/dtos/ProductDTO";
+import { ProductHome } from "../../../data/dtos/ProductDTO";
 
 interface ProductsScrollProps {
   categorySlug?: string;
-  onPressProduct?: (product: ProductDTO) => void;
+  onPressProduct?: (product: ProductHome) => void;
 }
 
 const ProductsScroll = ({

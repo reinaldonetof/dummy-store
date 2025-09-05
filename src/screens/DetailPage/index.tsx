@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import colors from "../../theme/colors";
@@ -9,30 +9,43 @@ import CarrouselDetailComponent from "./components/CarrouselDetailComponent";
 import HeaderNavigation from "./components/HeaderNavigation";
 import ButtonShop from "./components/ButtonShop";
 import { QuantityProvider } from "./context/QuantityContext";
+import { useGetProduct } from "../../hooks/useGetProduct";
+import LoadingIndicator from "../../components/LoadingIndicator";
+import ProductNotFound from "./components/ProductNotFound";
 
 const DetailPage = () => {
   const { params } = useRoute<RouteProp<RootStackParamList, "Detail">>();
-  const product = params?.product;
+  const productId = params?.product?.id || params.productId;
+
+  const { loadingProduct, product } = useGetProduct({ productId });
 
   return (
     <QuantityProvider>
       <SafeAreaView style={styles.safeArea}>
-        <View style={styles.container}>
-          <HeaderNavigation />
-          <CarrouselDetailComponent images={product?.images} />
-          <View style={styles.contentContainer}>
-            <View style={styles.gap4}>
-              <Text style={styles.title}>{product?.title}</Text>
-              <Text style={styles.brandLabel}>
-                Brand: <Text style={styles.brand}>{product?.brand}</Text>
-              </Text>
+        <HeaderNavigation />
+        {loadingProduct ? (
+          <LoadingIndicator />
+        ) : product ? (
+          <View style={styles.container}>
+            <CarrouselDetailComponent images={product?.images} />
+            <View style={styles.contentContainer}>
+              <View style={styles.gap4}>
+                <Text style={styles.title}>{product?.title}</Text>
+                <Text style={styles.brandLabel}>
+                  Brand: <Text style={styles.brand}>{product?.brand}</Text>
+                </Text>
+              </View>
+              <Text style={styles.price}>${product?.price}</Text>
+              <Text style={styles.description}>{product?.description}</Text>
+              <QuantityComponent inStock={product?.stock} />
             </View>
-            <Text style={styles.price}>${product?.price}</Text>
-            <Text style={styles.description}>{product?.description}</Text>
-            <QuantityComponent inStock={product?.stock} />
           </View>
-        </View>
-        <ButtonShop price={product?.price} title={product?.title} />
+        ) : (
+          <ProductNotFound />
+        )}
+        {product ? (
+          <ButtonShop price={product?.price} title={product?.title} />
+        ) : null}
       </SafeAreaView>
     </QuantityProvider>
   );

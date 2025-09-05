@@ -1,4 +1,5 @@
 import {
+  FetchProductByIdParams,
   FetchProductsByCategoryParams,
   FetchProductsParams,
   ProductRepositoryInterface,
@@ -26,5 +27,10 @@ export default class ProductDomain {
       return this.fetchProductsByCategory(params);
     }
     return this.fetchProducts(params);
+  }
+
+  public async fetchProductById(param: FetchProductByIdParams) {
+    const product = await this.repo.fetchProductById(param);
+    return product;
   }
 }

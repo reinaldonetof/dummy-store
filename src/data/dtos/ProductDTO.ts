@@ -1,8 +1,16 @@
 export interface ProductRequest {
-  products: ProductDTO[];
+  products: ProductHome[];
   total: number;
   skip: number;
   limit: number;
+}
+
+export interface ProductHome {
+  id: number;
+  title: string;
+  price: number;
+  rating: number;
+  images: string[];
 }
 
 export interface ProductDTO {

@@ -1,9 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import ProductDomain from "../domain/Product";
-import {
-  FetchProductsParams,
-  ProductRepository,
-} from "../services/ProductService";
+import { ProductRepository } from "../services/ProductService";
 import { ProductRequest } from "../data/dtos/ProductDTO";
 
 const LIMIT = 30;

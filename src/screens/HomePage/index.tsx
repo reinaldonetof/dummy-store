@@ -6,7 +6,7 @@ import CategoriesScroll, {
 } from "./components/CategoriesScroll";
 import ProductsScroll from "./components/ProductsScroll";
 import colors from "../../theme/colors";
-import { ProductDTO } from "../../data/dtos/ProductDTO";
+import { ProductHome } from "../../data/dtos/ProductDTO";
 import { useNavigation } from "@react-navigation/native";
 
 const HomePage = () => {
@@ -20,7 +20,7 @@ const HomePage = () => {
       setCategorySlug(category.selected ? category.slug : undefined);
     };
 
-  const handleOnSelectProduct = (product: ProductDTO) => {
+  const handleOnSelectProduct = (product: ProductHome) => {
     navigation.navigate("Detail", { product });
   };
 

@@ -1,8 +1,8 @@
-import { ProductDTO } from "../data/dtos/ProductDTO";
+import { ProductHome } from "../data/dtos/ProductDTO";
 
 export type RootStackParamList = {
   Home: undefined;
-  Detail: { productId?: number; product?: ProductDTO };
+  Detail: { productId?: number; product?: ProductHome };
 };
 
 declare global {
