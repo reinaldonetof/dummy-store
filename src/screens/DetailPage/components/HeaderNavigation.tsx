@@ -16,7 +16,6 @@ const HeaderNavigation = () => {
         color={colors.primary}
         onPress={() => navigation.goBack()}
       />
-      <TouchIcon name="calendar-outline" color={colors.primary} />
     </View>
   );
 };
