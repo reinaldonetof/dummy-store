@@ -11,6 +11,8 @@
 		1C37D89D5B16614DF1CC8FAC /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA683E44B8D66D21D930542 /* ExpoModulesProvider.swift */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
 		40E76B10447D1706E836F864 /* libPods-dummystore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0A606020F777368F3C76B4 /* libPods-dummystore.a */; };
+		57636DA42E6B393A00F1D444 /* CalendarReminderModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 57636DA32E6B393A00F1D444 /* CalendarReminderModule.m */; };
+		57636DA62E6B3BF700F1D444 /* CalendarReminderModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57636DA52E6B3BF700F1D444 /* CalendarReminderModule.swift */; };
 		BA4941618B6532E7FFC782D1 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 9C3B382EC6369D37D8C6F3F1 /* PrivacyInfo.xcprivacy */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
@@ -20,6 +22,10 @@
 		13B07F961A680F5B00A75B9A /* dummystore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dummystore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = dummystore/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = dummystore/Info.plist; sourceTree = "<group>"; };
+		57636DA22E6B393A00F1D444 /* CalendarReminderModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarReminderModule.h; sourceTree = "<group>"; };
+		57636DA32E6B393A00F1D444 /* CalendarReminderModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarReminderModule.m; sourceTree = "<group>"; };
+		57636DA52E6B3BF700F1D444 /* CalendarReminderModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarReminderModule.swift; sourceTree = "<group>"; };
+		57636DA72E6B3C4700F1D444 /* CalendarReminderModule-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CalendarReminderModule-Bridging-Header.h"; sourceTree = "<group>"; };
 		9C3B382EC6369D37D8C6F3F1 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = dummystore/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = dummystore/SplashScreen.storyboard; sourceTree = "<group>"; };
 		AAA683E44B8D66D21D930542 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-dummystore/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
@@ -47,6 +53,7 @@
 		13B07FAE1A68108700A75B9A /* dummystore */ = {
 			isa = PBXGroup;
 			children = (
+				571EB3652E6AC8EC00B270A3 /* CalendarReminderModule */,
 				F11748412D0307B40044C1D9 /* AppDelegate.swift */,
 				F11748442D0722820044C1D9 /* dummystore-Bridging-Header.h */,
 				BB2F792B24A3F905000567C9 /* Supporting */,
@@ -65,6 +72,17 @@
 				EC0A606020F777368F3C76B4 /* libPods-dummystore.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		571EB3652E6AC8EC00B270A3 /* CalendarReminderModule */ = {
+			isa = PBXGroup;
+			children = (
+				57636DA72E6B3C4700F1D444 /* CalendarReminderModule-Bridging-Header.h */,
+				57636DA22E6B393A00F1D444 /* CalendarReminderModule.h */,
+				57636DA32E6B393A00F1D444 /* CalendarReminderModule.m */,
+				57636DA52E6B3BF700F1D444 /* CalendarReminderModule.swift */,
+			);
+			path = CalendarReminderModule;
 			sourceTree = "<group>";
 		};
 		7C3B8DCE975B58BFCEA9667C /* Pods */ = {
@@ -318,6 +336,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
+				57636DA62E6B3BF700F1D444 /* CalendarReminderModule.swift in Sources */,
+				57636DA42E6B393A00F1D444 /* CalendarReminderModule.m in Sources */,
 				1C37D89D5B16614DF1CC8FAC /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
