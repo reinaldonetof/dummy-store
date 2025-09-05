@@ -127,16 +127,12 @@ Comprehensive error handling strategy:
 
 
 ## 🖼️ Screenshots
-
-### Category View
-<img src="https://github.com/reinaldonetof/dummy-store/blob/development/public/assets/pic-category.png" alt="Category View"  height="150"/>
-
-<img src="https://github.com/reinaldonetof/dummy-store/blob/development/public/assets/pic-detail.png" alt="Product Detail" height="150"/>
-
-<img src="https://github.com/reinaldonetof/dummy-store/blob/development/public/assets/pic-pagination.png" alt="Pagination" height="150"/>
+<img height="300" alt="pic-category" src="https://github.com/user-attachments/assets/5333619f-ab3c-4514-b133-0ea9173eee69" />
+<img height="300" alt="pic-detail" src="https://github.com/user-attachments/assets/1abcde22-1575-40b1-95ab-a7e6d4c6e245" />
+<img height="300" alt="pic-pagination" src="https://github.com/user-attachments/assets/228536d2-267f-47ec-a51b-bf32b09b75fb" />
 
 ## 🎥 Demo Video
 
-https://github.com/reinaldonetof/dummy-store/blob/development/public/assets/video-demo.mp4
+https://github.com/user-attachments/assets/25285f13-9a6f-44ba-9cdb-4233e5a053ae
 
 
