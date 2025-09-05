@@ -3,10 +3,11 @@ import { StyleSheet, View } from "react-native";
 import { ProductDTO } from "../../data/dtos/ProductDTO";
 import { SafeAreaView } from "react-native-safe-area-context";
 import colors from "../../theme/colors";
-import { useRoute } from "@react-navigation/native";
+import { RouteProp, useRoute } from "@react-navigation/native";
+import { RootStackParamList } from "../../routes/navigationType";
 
 const DetailPage = () => {
-  const { params } = useRoute();
+  const { params } = useRoute<RouteProp<RootStackParamList, "Detail">>();
   const product = params?.product;
   console.log("🚀 ~ DetailPage ~ product:", product);
   const productId = params?.productId;

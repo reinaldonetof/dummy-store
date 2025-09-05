@@ -6,21 +6,32 @@ import CategoriesScroll, {
 } from "./components/CategoriesScroll";
 import ProductsScroll from "./components/ProductsScroll";
 import colors from "../../theme/colors";
+import { ProductDTO } from "../../data/dtos/ProductDTO";
+import { useNavigation } from "@react-navigation/native";
 
 const HomePage = () => {
   const [categorySlug, setCategorySlug] = React.useState<string | undefined>(
     undefined
   );
+  const navigation = useNavigation();
+
   const handleOnSelectCategory: CategoriesScrollProps["handleOnSelectCategory"] =
     (category) => {
       setCategorySlug(category.selected ? category.slug : undefined);
     };
 
+  const handleOnSelectProduct = (product: ProductDTO) => {
+    navigation.navigate("Detail", { product });
+  };
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         <CategoriesScroll handleOnSelectCategory={handleOnSelectCategory} />
-        <ProductsScroll categorySlug={categorySlug} />
+        <ProductsScroll
+          categorySlug={categorySlug}
+          onPressProduct={handleOnSelectProduct}
+        />
       </View>
     </SafeAreaView>
   );

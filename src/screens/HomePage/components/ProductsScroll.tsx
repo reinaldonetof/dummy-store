@@ -4,12 +4,17 @@ import ListHeader from "../../../components/ListHeader";
 import ProductMiniCardItem from "../../../components/ProductMiniCardItem";
 import { useGetProducts } from "../../../hooks/useGetProducts";
 import LoadingIndicator from "../../../components/LoadingIndicator";
+import { ProductDTO } from "../../../data/dtos/ProductDTO";
 
 interface ProductsScrollProps {
   categorySlug?: string;
+  onPressProduct?: (product: ProductDTO) => void;
 }
 
-const ProductsScroll = ({ categorySlug }: ProductsScrollProps) => {
+const ProductsScroll = ({
+  categorySlug,
+  onPressProduct,
+}: ProductsScrollProps) => {
   const {
     loadingProducts,
     productsRequest,
@@ -46,7 +51,12 @@ const ProductsScroll = ({ categorySlug }: ProductsScrollProps) => {
         <FlatList
           data={productsRequest?.products}
           keyExtractor={(item) => `${item.id}`}
-          renderItem={({ item }) => <ProductMiniCardItem {...item} />}
+          renderItem={({ item }) => (
+            <ProductMiniCardItem
+              {...item}
+              onPress={() => onPressProduct?.(item)}
+            />
+          )}
           numColumns={2}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.contentContainerStyle}
