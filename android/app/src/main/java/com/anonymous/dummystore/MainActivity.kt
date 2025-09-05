@@ -1,7 +1,7 @@
 package com.anonymous.dummystore
 
-import android.os.Build
 import android.os.Bundle
+import android.os.Build
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
@@ -38,6 +38,10 @@ class MainActivity : ReactActivity() {
               mainComponentName,
               fabricEnabled
           ){})
+  }
+
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(null)
   }
 
   /**
