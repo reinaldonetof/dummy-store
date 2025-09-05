@@ -4,7 +4,7 @@ import HttpService from "./httpService";
 export interface FetchProductsParams {
   limit?: number;
   skip?: number;
-  order?: "asc" | "desc";
+  order?: "asc" | "desc" | null;
 }
 
 export interface FetchProductsByCategoryParams extends FetchProductsParams {
@@ -30,6 +30,7 @@ export class ProductRepository implements ProductRepositoryInterface {
       if (!!params.limit) queryParams.append("limit", params.limit.toString());
       if (!!params.skip) queryParams.append("skip", params.skip.toString());
       if (!!params.order) queryParams.append("order", params.order);
+      if (!!params.order) queryParams.append("sortBy", "price");
     }
     queryParams.append("select", "id,images,title,price,rating");
 
@@ -46,6 +47,7 @@ export class ProductRepository implements ProductRepositoryInterface {
       if (!!params.limit) queryParams.append("limit", params.limit.toString());
       if (!!params.skip) queryParams.append("skip", params.skip.toString());
       if (!!params.order) queryParams.append("order", params.order);
+      if (!!params.order) queryParams.append("sortBy", "price");
     }
     queryParams.append("select", "id,images,title,price,rating");
 

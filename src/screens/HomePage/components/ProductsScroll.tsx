@@ -1,7 +1,8 @@
 import React from "react";
-import { FlatList, StyleSheet, Text } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 import ListHeader from "../../../components/ListHeader";
 import ProductMiniCardItem from "../../../components/ProductMiniCardItem";
+import SortButtons from "../../../components/SortButtons";
 import { useGetProducts } from "../../../hooks/useGetProducts";
 import LoadingIndicator from "../../../components/LoadingIndicator";
 import { ProductHome } from "../../../data/dtos/ProductDTO";
@@ -21,6 +22,8 @@ const ProductsScroll = ({
     nextPage,
     currentProductsShowingValue,
     loadingNewProducts,
+    sortOrder,
+    changeSortOrder,
   } = useGetProducts({ categorySlug });
 
   const onEndReached = () => {
@@ -32,11 +35,12 @@ const ProductsScroll = ({
   const RightComponent = () => {
     if (productsRequest?.total) {
       return (
-        <>
-          <Text>
+        <View style={styles.rightComponentContainer}>
+          <Text style={styles.productCount}>
             {currentProductsShowingValue}/{productsRequest.total} Products
           </Text>
-        </>
+          <SortButtons sortOrder={sortOrder} onSortChange={changeSortOrder} />
+        </View>
       );
     }
     return null;
@@ -77,6 +81,14 @@ const styles = StyleSheet.create({
   },
   columnWrapperStyle: {
     justifyContent: "space-between",
+  },
+  rightComponentContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  productCount: {
+    fontSize: 12,
   },
 });
 
