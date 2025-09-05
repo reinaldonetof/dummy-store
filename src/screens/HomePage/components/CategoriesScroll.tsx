@@ -24,7 +24,7 @@ const CategoriesScroll = ({
     if (params?.categorySlug) {
       categorySlugParam.current = params.categorySlug;
     }
-  }, [params.categorySlug]);
+  }, [params?.categorySlug]);
 
   useEffect(() => {
     if (categorySlugParam.current) {
