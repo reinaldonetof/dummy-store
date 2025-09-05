@@ -44,7 +44,11 @@ const DetailPage = () => {
           <ProductNotFound />
         )}
         {product ? (
-          <ButtonShop price={product?.price} title={product?.title} />
+          <ButtonShop
+            price={product?.price}
+            title={product?.title}
+            productId={product.id}
+          />
         ) : null}
       </SafeAreaView>
     </QuantityProvider>
